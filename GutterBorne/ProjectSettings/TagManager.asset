@@ -44,5 +44,11 @@ TagManager:
   - name: Player
     uniqueID: 3503837909
     locked: 0
+  - name: Enemy
+    uniqueID: 1616188421
+    locked: 0
+  - name: Crosshair
+    uniqueID: 3649506721
+    locked: 0
   m_RenderingLayers:
   - Default
