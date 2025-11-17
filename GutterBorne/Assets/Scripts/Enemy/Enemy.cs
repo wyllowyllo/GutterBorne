@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
         _isActive = false;
 
         if (_animator != null)
-            _animator.SetTrigger("Die");
+            _animator.SetTrigger("die");
 
         Invoke("Disappear", 1f);
     }
