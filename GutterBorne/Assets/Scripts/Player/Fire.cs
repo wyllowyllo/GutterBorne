@@ -111,7 +111,8 @@ public class Fire : MonoBehaviour
         float randomAngle = Random.Range(-_spreadAngle, _spreadAngle);
         Vector2 dir = Quaternion.Euler(0, 0, randomAngle) * baseDirection;
 
-        RaycastHit2D hit = Physics2D.Raycast(muzzle.position, dir, _shotRange);
+        int enemyMask = LayerMask.GetMask("Enemy");
+        RaycastHit2D hit = Physics2D.Raycast(muzzle.position, dir, _shotRange, enemyMask);
 
         if (hit.collider != null && hit.transform.CompareTag("Enemy"))
         {

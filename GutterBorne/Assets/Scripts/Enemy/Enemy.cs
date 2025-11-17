@@ -88,8 +88,11 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
-
-        _animator.SetTrigger("hit");
+        else
+        {
+            _animator.SetTrigger("hit");
+        }
+       
        
     }
 
@@ -98,6 +101,7 @@ public class Enemy : MonoBehaviour
         _isDead = true;
         _isActive = false;
 
+        Destroy(gameObject);
        /* if (_animator != null)
             _animator.SetTrigger("die");*/
 
