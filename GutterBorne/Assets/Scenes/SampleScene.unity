@@ -429,6 +429,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5697221648300086569, guid: 127b067cea8c470428abe360856e0c18, type: 3}
   m_PrefabInstance: {fileID: 3129374821805537275}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1323721804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323721802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1c33388bdf19b4988c75fb04df66d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3129374821805537275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -448,6 +460,10 @@ PrefabInstance:
     - target: {fileID: 1327143980591682210, guid: 127b067cea8c470428abe360856e0c18, type: 3}
       propertyPath: m_SortingLayerID
       value: -791129387
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526403690895402005, guid: 127b067cea8c470428abe360856e0c18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.148
       objectReference: {fileID: 0}
     - target: {fileID: 2965199572009876761, guid: 127b067cea8c470428abe360856e0c18, type: 3}
       propertyPath: m_FlipX
@@ -522,6 +538,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3413979200080215735, guid: 127b067cea8c470428abe360856e0c18, type: 3}
       insertIndex: -1
       addedObject: {fileID: 36888554}
+    - targetCorrespondingSourceObject: {fileID: 5697221648300086569, guid: 127b067cea8c470428abe360856e0c18, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1323721804}
   m_SourcePrefab: {fileID: 100100000, guid: 127b067cea8c470428abe360856e0c18, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

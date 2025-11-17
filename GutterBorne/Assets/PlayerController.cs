@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigid;
     private Animator _animator;
 
+    private Camera _camera;
+    
     private float moveHorizontal;
     private float moveVertical;
     private void Awake()
@@ -19,15 +21,21 @@ public class PlayerController : MonoBehaviour
         _rigid = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _renderer = GetComponent<SpriteRenderer>();
+        
+        _camera = Camera.main;
     }
 
     private void Update()
     {
        GetInput();
        Move();
-       Aim();
+      
     }
 
+    private void LateUpdate()
+    {
+        Turn();
+    }
     
 
     private void GetInput()
@@ -49,12 +57,19 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    
-    private void Aim()
+    private void Turn()
     {
+        Vector3 mouseWorldPos = _camera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 dir = mouseWorldPos - transform.position;
+
+        // 오른쪽 
+        bool facingRight = dir.x >= 0f;
+
+        _renderer.flipX = !facingRight;
         
     }
 
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Enemy")) return;
