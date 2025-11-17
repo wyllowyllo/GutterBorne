@@ -48,6 +48,9 @@ TagManager:
   - name: Enemy
     uniqueID: 1616188421
     locked: 0
+  - name: Architecture
+    uniqueID: 4142338715
+    locked: 0
   - name: VFX
     uniqueID: 2054185947
     locked: 0
