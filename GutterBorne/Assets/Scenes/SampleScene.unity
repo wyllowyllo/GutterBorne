@@ -310,7 +310,7 @@ MonoBehaviour:
   _shotDamage: 10
   _knockbackForce: 5
   muzzle: {fileID: 564322892}
-  hitEffectPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 8782009059513614302, guid: 171dda363e9efd94ca9bc63e38ca9658, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
