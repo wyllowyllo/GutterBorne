@@ -17,7 +17,8 @@ public class Fire : MonoBehaviour
     [Header("탄약 / 재장전")]
     [SerializeField] private int _magazineSize = 6;     // 탄창 크기
     [SerializeField] private float _reloadTime = 2.0f;  // 재장전 시간(초)
-    private int _currentAmmo;                           // 현재 탄창 내 탄 수
+    [SerializeField] private ReloaderBar _reloadBar;
+    private int _currentAmmo;                           
     private bool _isReloading = false;     
     
     [Header("샷건 오브젝트 참조")]
@@ -142,12 +143,28 @@ public class Fire : MonoBehaviour
         _isReloading = true;
 
         // TODO: 재장전 사운드
-        // TODO : 재장전 애니메이션 (할수 있다면?)
+        
+        _reloadBar.Show(); // 재장전 UI 표시
+
+        float elapsed = 0f;
         Debug.Log("Reloading..");
         
-        yield return new WaitForSeconds(_reloadTime);
+        while (elapsed < _reloadTime)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / _reloadTime);
+
+            if (_reloadBar != null)
+            {
+                _reloadBar.SetProgress(t);
+            }
+
+            yield return null;
+        }
 
         Debug.Log("Reloading Complete!");
+        
+        _reloadBar.Hide();
         
         _currentAmmo = MagazineSize;
         _isReloading = false;
