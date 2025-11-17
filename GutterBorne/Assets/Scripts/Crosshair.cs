@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class Crosshair : MonoBehaviour
 {
+    [Header("최대 사거리 설정")]
+    [SerializeField] private float _maxDistance = 5f; 
+   
+    private Transform _weaponPosition;
+    
     private Camera _camera;
 
     private void Awake()
@@ -12,6 +17,7 @@ public class Crosshair : MonoBehaviour
     private void Init()
     {
         _camera = Camera.main;
+        _weaponPosition = transform.parent;
         
         // 시스템 커서 숨기기 + 게임 창 안에 가두기
         Cursor.visible = false;
@@ -29,9 +35,20 @@ public class Crosshair : MonoBehaviour
         
         Vector3 mouseScreenPos = Input.mousePosition;
         Vector3 mouseWorldPos = _camera.ScreenToWorldPoint(mouseScreenPos);
-        
         mouseWorldPos.z = 0f;
         
-        transform.position = mouseWorldPos;
+        Vector3 centerPos = _weaponPosition.position;
+        Vector3 distance = mouseWorldPos - centerPos;
+        
+        
+        // 사거리 제한 
+        float sqrMax = _maxDistance * _maxDistance;
+        if (distance.sqrMagnitude > sqrMax)
+        {
+            distance = distance.normalized * _maxDistance;
+        }
+
+        // 4. 크로스헤어 위치 = 플레이어 위치 + (제한된 오프셋)
+        transform.position = centerPos + distance;
     }
 }
