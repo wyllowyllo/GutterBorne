@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] private int _health;
+    [SerializeField] private int _maxHealth;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private GameObject _playerHand;
 
@@ -23,6 +24,11 @@ public class PlayerController : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
         
         _camera = Camera.main;
+    }
+
+    private void Start()
+    {
+        _health = _maxHealth;
     }
 
     private void Update()
@@ -54,7 +60,7 @@ public class PlayerController : MonoBehaviour
         
         transform.position = nextPosition;
         _animator.SetFloat("moveSpeed", direction.magnitude);
-        
+        _rigid.linearVelocity = Vector2.zero;
     }
 
     private void Turn()

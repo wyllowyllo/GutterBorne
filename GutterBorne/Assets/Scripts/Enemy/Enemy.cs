@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
 
       
         _animator.SetFloat("moveSpeed", _moveSpeed);
-         _renderer.flipX = (dir.x < 0);
+         _renderer.flipX = (dir.x > 0);
         
     }
 
@@ -81,15 +81,16 @@ public class Enemy : MonoBehaviour
     {
         if (_isDead) return;
 
+        Debug.Log("Hit!");
+
         _currentHealth -= Mathf.RoundToInt(damage);
         if (_currentHealth <= 0)
         {
             Die();
         }
-        else
-        {
-            // 피격 리액션 넣고 싶으면 여기 (깜빡임 등)
-        }
+
+        _animator.SetTrigger("hit");
+       
     }
 
     private void Die()
@@ -97,14 +98,10 @@ public class Enemy : MonoBehaviour
         _isDead = true;
         _isActive = false;
 
-        if (_animator != null)
-            _animator.SetTrigger("die");
+       /* if (_animator != null)
+            _animator.SetTrigger("die");*/
 
-        Invoke("Disappear", 1f);
     }
 
-    private void Disappear()
-    {
-        Destroy(gameObject);
-    }
+    
 }

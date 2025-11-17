@@ -7,7 +7,7 @@ public class RoomActivator : MonoBehaviour
 
     private bool _isActivated = false;
 
- 
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
