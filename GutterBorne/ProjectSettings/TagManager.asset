@@ -57,5 +57,8 @@ TagManager:
   - name: Crosshair
     uniqueID: 3649506721
     locked: 0
+  - name: UI
+    uniqueID: 2902021099
+    locked: 0
   m_RenderingLayers:
   - Default
