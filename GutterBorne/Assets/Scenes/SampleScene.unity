@@ -450,6 +450,14 @@ PrefabInstance:
       value: -791129387
       objectReference: {fileID: 0}
     - target: {fileID: 2965199572009876761, guid: 127b067cea8c470428abe360856e0c18, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965199572009876761, guid: 127b067cea8c470428abe360856e0c18, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965199572009876761, guid: 127b067cea8c470428abe360856e0c18, type: 3}
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}

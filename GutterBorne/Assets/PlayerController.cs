@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private GameObject _playerHand;
 
+    private SpriteRenderer _renderer;
     private Rigidbody2D _rigid;
     private Animator _animator;
 
@@ -17,18 +18,25 @@ public class PlayerController : MonoBehaviour
     {
         _rigid = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _renderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
        GetInput();
        Move();
+       Aim();
     }
+
+    
 
     private void GetInput()
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
+
+        if (moveHorizontal >= 0) _renderer.flipX = false;
+        else _renderer.flipX = true;
     }
     private void Move()
     {
@@ -38,6 +46,13 @@ public class PlayerController : MonoBehaviour
         
         transform.position = nextPosition;
         _animator.SetFloat("moveSpeed", direction.magnitude);
+        
+    }
+
+    
+    private void Aim()
+    {
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
