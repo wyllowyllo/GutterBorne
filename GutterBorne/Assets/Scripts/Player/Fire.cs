@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,7 +18,9 @@ public class Fire : MonoBehaviour
     [SerializeField] private WeaponRecoil _weaponRecoil;
     [SerializeField] private Animator _fireAnim;
     
-    [Header("VFX")]
+    
+    [Header("특수 효과")]
+    [SerializeField] private CinemachineImpulseSource _impulseSource;
     [SerializeField] private GameObject hitEffectPrefab;   //  히트 이펙트 프리팹
 
     Camera cam;
@@ -60,7 +63,12 @@ public class Fire : MonoBehaviour
         // TODO : 사격 사운드 추가하기
         _fireAnim.SetTrigger("Shot");
         _weaponRecoil.PlayRecoil(aimDir);
-        CameraShake.Instance.Shake(0.08f, 0.15f); // 카메라 흔들기
+        if (_impulseSource != null)
+        {
+            _impulseSource.GenerateImpulse();
+            // 방향 넣고 싶으면 GenerateImpulse(aimDir) 도 가능
+        }
+        //CameraShake.Instance.Shake(0.08f, 0.15f); // 카메라 흔들기
     }
 
     private void FirePellet(Vector2 baseDirection)
