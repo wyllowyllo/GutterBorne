@@ -126,12 +126,7 @@ public class Fire : MonoBehaviour
             if (enemy)
             {
                 enemy.TakeDamage(_shotDamage);
-
-                Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
-                if (rigid)
-                {
-                    rigid.AddForce(dir * _knockbackForce, ForceMode2D.Impulse);
-                }
+                enemy.Knockback(dir, _knockbackForce);
             }
         }
 
