@@ -5,10 +5,11 @@ using Random = UnityEngine.Random;
 public class Fire : MonoBehaviour
 {
     [Header("샷건 성능 변수")]
-    [SerializeField] private int _pelletCount = 8;
-    [SerializeField] private float _shotRange = 5f;
-    [SerializeField] private float _spreadAngle = 15f;
-    [SerializeField] private float _shotDamage = 10f;
+    [SerializeField] private float _shotDamage = 10f; 
+    [SerializeField] private float _shotRange = 5f; // 사거리
+    [SerializeField] private float _fireCoolTime = 0.4f;
+    [SerializeField] private int _pelletCount = 8; // 산탄 개수
+    [SerializeField] private float _spreadAngle = 15f; // 산탄 정도
     [SerializeField] private float _knockbackForce = 5f;
 
     [Header("샷건 오브젝트 참조")]
@@ -21,6 +22,7 @@ public class Fire : MonoBehaviour
 
     Camera cam;
 
+    private float _shotTimer = 0f;
     private void Awake()
     {
         cam = Camera.main;
@@ -28,12 +30,22 @@ public class Fire : MonoBehaviour
 
     private void Update()
     {
+        _shotTimer += Time.deltaTime;
+        
         if (Input.GetMouseButtonDown(0))
         {
-            Shoot();
+            TryShoot();
         }
     }
 
+    private void TryShoot()
+    {
+        if (_shotTimer < _fireCoolTime)
+            return;
+        
+        Shoot();
+        _shotTimer = 0f;
+    }
     private void Shoot()
     {
         Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -45,6 +57,7 @@ public class Fire : MonoBehaviour
         }
         
         // 이펙트 효과 
+        // TODO : 사격 사운드 추가하기
         _fireAnim.SetTrigger("Shot");
         _weaponRecoil.PlayRecoil(aimDir);
         CameraShake.Instance.Shake(0.08f, 0.15f); // 카메라 흔들기
