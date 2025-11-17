@@ -14,6 +14,7 @@ public class Fire : MonoBehaviour
     [Header("샷건 오브젝트 참조")]
     [SerializeField] private Transform muzzle;
     [SerializeField] private WeaponRecoil _weaponRecoil;
+    [SerializeField] private Animator _fireAnim;
     
     [Header("VFX")]
     [SerializeField] private GameObject hitEffectPrefab;   //  히트 이펙트 프리팹
@@ -44,6 +45,7 @@ public class Fire : MonoBehaviour
         }
         
         // 이펙트 효과 
+        _fireAnim.SetTrigger("Shot");
         _weaponRecoil.PlayRecoil(aimDir);
         CameraShake.Instance.Shake(0.08f, 0.15f); // 카메라 흔들기
     }
