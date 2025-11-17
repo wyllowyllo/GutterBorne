@@ -39,6 +39,8 @@ public class Fire : MonoBehaviour
         {
             FirePellet(aimDir);
         }
+        
+        CameraShake.Instance.Shake(0.08f, 0.15f); // 살짝만 흔들기
     }
 
     private void FirePellet(Vector2 baseDirection)
