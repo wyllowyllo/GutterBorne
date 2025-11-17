@@ -4,16 +4,19 @@ using Random = UnityEngine.Random;
 
 public class Fire : MonoBehaviour
 {
-    [Header("Shotgun Settings")]
+    [Header("샷건 성능 변수")]
     [SerializeField] private int _pelletCount = 8;
     [SerializeField] private float _shotRange = 5f;
     [SerializeField] private float _spreadAngle = 15f;
     [SerializeField] private float _shotDamage = 10f;
     [SerializeField] private float _knockbackForce = 5f;
 
-    [Header("References")]
+    [Header("샷건 오브젝트 참조")]
     [SerializeField] private Transform muzzle;
-    [SerializeField] private GameObject hitEffectPrefab;   // ✅ 히트 이펙트 프리팹
+    [SerializeField] private WeaponRecoil _weaponRecoil;
+    
+    [Header("VFX")]
+    [SerializeField] private GameObject hitEffectPrefab;   //  히트 이펙트 프리팹
 
     Camera cam;
 
@@ -40,7 +43,9 @@ public class Fire : MonoBehaviour
             FirePellet(aimDir);
         }
         
-        CameraShake.Instance.Shake(0.08f, 0.15f); // 살짝만 흔들기
+        // 이펙트 효과 
+        _weaponRecoil.PlayRecoil(aimDir);
+        CameraShake.Instance.Shake(0.08f, 0.15f); // 카메라 흔들기
     }
 
     private void FirePellet(Vector2 baseDirection)
