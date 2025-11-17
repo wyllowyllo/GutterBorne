@@ -65,10 +65,8 @@ public class Fire : MonoBehaviour
         _weaponRecoil.PlayRecoil(aimDir);
         if (_impulseSource != null)
         {
-            _impulseSource.GenerateImpulse();
-            // 방향 넣고 싶으면 GenerateImpulse(aimDir) 도 가능
+            _impulseSource.GenerateImpulse(-aimDir); // 사격 반대 방향으로 카메라 흔들기
         }
-        //CameraShake.Instance.Shake(0.08f, 0.15f); // 카메라 흔들기
     }
 
     private void FirePellet(Vector2 baseDirection)
@@ -78,7 +76,7 @@ public class Fire : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(muzzle.position, dir, _shotRange);
 
-        if (hit.collider != null)
+        if (hit.collider != null && hit.transform.CompareTag("Enemy"))
         {
             // 🔸 히트 이펙트 생성
             if (hitEffectPrefab != null)
