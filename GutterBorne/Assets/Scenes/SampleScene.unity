@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -271,6 +272,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultDuration: 0.1
   _defaultMagnitude: 0.2
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cc527f8f24df247a44de4dc9c6ec1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 603664799}
+  _smoothSpeed: 10
 --- !u!1 &564322891
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +432,11 @@ MonoBehaviour:
   _weaponRecoil: {fileID: 1862313519}
   _fireAnim: {fileID: 2067170470}
   hitEffectPrefab: {fileID: 8782009059513614302, guid: 171dda363e9efd94ca9bc63e38ca9658, type: 3}
+--- !u!4 &603664799 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6222956812169244063, guid: 127b067cea8c470428abe360856e0c18, type: 3}
+  m_PrefabInstance: {fileID: 3129374821805537275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
