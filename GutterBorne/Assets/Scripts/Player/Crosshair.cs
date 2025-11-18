@@ -6,6 +6,7 @@ public class Crosshair : MonoBehaviour
     [SerializeField] private Transform _muzzle;
     [SerializeField] private float _maxDistance = 5f; 
     
+    
     private Camera _camera;
 
     private void Awake()

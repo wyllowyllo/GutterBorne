@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _inGamePanel;
     [SerializeField] private GameObject _gameOverPanel;
 
+    [Header("플레이어")]
+    [SerializeField] private PlayerBody _playerBody;
     private bool _isGameOver = false;
 
     private void Awake()
@@ -24,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        _playerBody.OnDeathEvent.AddListener(PlayerDeath);
+        
         ShowTitle();
     }
 
@@ -47,7 +52,7 @@ public class GameManager : MonoBehaviour
         if (_gameOverPanel != null) _gameOverPanel.SetActive(false);
     }
 
-    public void GameOver()
+    private void GameOver()
     {
         if (_isGameOver) return;
         _isGameOver = true;
@@ -57,7 +62,15 @@ public class GameManager : MonoBehaviour
         if (_gameOverPanel != null) _gameOverPanel.SetActive(true);
         if (_inGamePanel != null) _inGamePanel.SetActive(false);
     }
-    
+
+    private void PlayerDeath()
+    {
+        Invoke("GameOver", 1f);
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
     public void QuitGame()
     {
 #if UNITY_EDITOR
