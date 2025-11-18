@@ -29079,7 +29079,7 @@ PrefabInstance:
     - target: {fileID: 9031761959565974111, guid: 127b067cea8c470428abe360856e0c18, type: 3}
       propertyPath: hitEffectPrefab
       value: 
-      objectReference: {fileID: 8782009059513614302, guid: 171dda363e9efd94ca9bc63e38ca9658, type: 3}
+      objectReference: {fileID: 5586783540032275536, guid: 6e57a3cf9435eb14fb9928fa4ee60c63, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
