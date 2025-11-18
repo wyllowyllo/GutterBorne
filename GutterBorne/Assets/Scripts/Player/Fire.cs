@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Fire : MonoBehaviour
@@ -32,6 +33,9 @@ public class Fire : MonoBehaviour
     [SerializeField] private CinemachineImpulseSource _impulseSource;
     [SerializeField] private GameObject hitEffectPrefab;   //  히트 이펙트 프리팹
 
+    [Header("UI")]
+    [SerializeField] private Text _bulletTxt;
+    
     private PlayerBody _playerBody;
     private Camera cam;
 
@@ -76,6 +80,13 @@ public class Fire : MonoBehaviour
                 StartCoroutine(ReloadRoutine());
             }
         }
+    }
+
+    private void LateUpdate()
+    {
+        if (_bulletTxt == null) return;
+
+        _bulletTxt.text = $"{_currentAmmo} / {MagazineSize}";
     }
 
     private void TryShoot()
