@@ -11,9 +11,11 @@ public class Enemy : MonoBehaviour
     [Header("넉백 시간")]
     [SerializeField] private float _knockbackDuration = 0.15f;
 
-    [Header("참조")]
-    [SerializeField] private SpriteRenderer _renderer;
-    [SerializeField] private Animator _animator;
+    [Header(("사망 vfx"))]
+    [SerializeField] private GameObject _deathVFX;
+    
+    private SpriteRenderer _renderer;
+    private Animator _animator;
 
     private Rigidbody2D _rigid;
     private Transform _player;
@@ -81,7 +83,7 @@ public class Enemy : MonoBehaviour
 
       
         _animator.SetFloat("moveSpeed", _moveSpeed);
-         _renderer.flipX = (dir.x > 0);
+        _renderer.flipX = (dir.x > 0);
         
     }
 
@@ -153,6 +155,7 @@ public class Enemy : MonoBehaviour
         _isDead = true;
         _isActive = false;
 
+        Instantiate(_deathVFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
        /* if (_animator != null)
             _animator.SetTrigger("die");*/

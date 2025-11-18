@@ -28,6 +28,7 @@ public class Fire : MonoBehaviour
     
     
     [Header("특수 효과")]
+    [SerializeField] private float _cameraShakeStrength = 0.5f;
     [SerializeField] private CinemachineImpulseSource _impulseSource;
     [SerializeField] private GameObject hitEffectPrefab;   //  히트 이펙트 프리팹
 
@@ -102,7 +103,7 @@ public class Fire : MonoBehaviour
         // TODO : 사격 사운드 추가하기
         _fireAnim.SetTrigger("Shot");
         _weaponRecoil.PlayRecoil(aimDir);
-        _impulseSource.GenerateImpulse(-aimDir); // 사격 반대 방향으로 카메라 흔들기
+        _impulseSource.GenerateImpulse(-aimDir * _cameraShakeStrength); // 사격 반대 방향으로 카메라 흔들기
         
     }
 

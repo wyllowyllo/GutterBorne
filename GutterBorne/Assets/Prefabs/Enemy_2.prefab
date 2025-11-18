@@ -191,5 +191,5 @@ MonoBehaviour:
   _maxHealth: 100
   _moveSpeed: 4
   _stopDistance: 0.5
-  _renderer: {fileID: 0}
-  _animator: {fileID: 0}
+  _knockbackDuration: 0.15
+  _deathVFX: {fileID: 8782009059513614302, guid: 171dda363e9efd94ca9bc63e38ca9658, type: 3}

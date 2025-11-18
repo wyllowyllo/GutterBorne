@@ -29076,6 +29076,10 @@ PrefabInstance:
       propertyPath: _knockbackForce
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 9031761959565974111, guid: 127b067cea8c470428abe360856e0c18, type: 3}
+      propertyPath: hitEffectPrefab
+      value: 
+      objectReference: {fileID: 5669246471909640947, guid: bfd016bff164dfc4aac33a0563922772, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
