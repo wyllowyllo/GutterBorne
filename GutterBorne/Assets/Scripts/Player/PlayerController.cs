@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-    [SerializeField] private int _health;
-    [SerializeField] private int _maxHealth;
+    
     [SerializeField] private float _moveSpeed;
     [SerializeField] private GameObject _playerHand;
 
+    private PlayerBody _playerBody;
     private SpriteRenderer _renderer;
     private Rigidbody2D _rigid;
     private Animator _animator;
@@ -17,8 +16,11 @@ public class PlayerController : MonoBehaviour
     
     private float moveHorizontal;
     private float moveVertical;
+    
+    private bool _isDead;
     private void Awake()
     {
+        _playerBody = GetComponent<PlayerBody>();
         _rigid = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _renderer = GetComponent<SpriteRenderer>();
@@ -28,11 +30,13 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _health = _maxHealth;
+        _playerBody.OnDeathEvent.AddListener(PlayerDie);
     }
 
     private void Update()
     {
+        if (_isDead) return;
+        
        GetInput();
        Move();
       
@@ -75,9 +79,11 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    
-    private void OnTriggerEnter2D(Collider2D other)
+    private void PlayerDie()
     {
-        if (!other.CompareTag("Enemy")) return;
+        _isDead = true;
+        _rigid.linearVelocity = Vector2.zero;
     }
+
+    
 }

@@ -32,10 +32,12 @@ public class Fire : MonoBehaviour
     [SerializeField] private CinemachineImpulseSource _impulseSource;
     [SerializeField] private GameObject hitEffectPrefab;   //  히트 이펙트 프리팹
 
-    Camera cam;
+    private PlayerBody _playerBody;
+    private Camera cam;
 
     private float _shotTimer = 0f;
 
+    private bool _isDead;
     public int CurrentAmmo => _currentAmmo;
 
     public int MagazineSize => _magazineSize;
@@ -44,16 +46,21 @@ public class Fire : MonoBehaviour
 
     private void Awake()
     {
+        _playerBody = GetComponent<PlayerBody>();
         cam = Camera.main;
+        
+        _currentAmmo = MagazineSize;
     }
 
     private void Start()
     {
-        _currentAmmo = MagazineSize;
+        _playerBody.OnDeathEvent.AddListener(PlayerDie);
     }
 
     private void Update()
     {
+        if (_isDead) return;
+        
         _shotTimer += Time.deltaTime;
         
         if (Input.GetMouseButtonDown(0))
@@ -165,5 +172,11 @@ public class Fire : MonoBehaviour
         
         _currentAmmo = MagazineSize;
         _isReloading = false;
+    }
+
+    private void PlayerDie()
+    {
+        _isDead = true;
+        StopAllCoroutines();
     }
 }
