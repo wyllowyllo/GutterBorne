@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Exploison : MonoBehaviour
 {
+    [SerializeField] private float shakeStrength = 0.5f;
+    
     private AudioSource _audioSource; 
     private CinemachineImpulseSource _impulse;
 
@@ -23,7 +25,7 @@ public class Exploison : MonoBehaviour
         // 파티클이 재생될 때 한 번만 흔들기
         if (_ps != null && _impulse != null)
         {
-            _impulse.GenerateImpulse();
+            _impulse.GenerateImpulse(Vector2.one * shakeStrength);
         }
     }
 }
