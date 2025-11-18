@@ -32,7 +32,12 @@ public class Fire : MonoBehaviour
     [SerializeField] private float _cameraShakeStrength = 0.5f;
     [SerializeField] private CinemachineImpulseSource _impulseSource;
     [SerializeField] private GameObject hitEffectPrefab;   //  히트 이펙트 프리팹
-
+    
+    [Header("오디오")]
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip _fireSound;
+    [SerializeField] private AudioClip _reloadSound;
+    
     [Header("UI")]
     [SerializeField] private Text _bulletTxt;
     
@@ -51,6 +56,8 @@ public class Fire : MonoBehaviour
     private void Awake()
     {
         _playerBody = GetComponent<PlayerBody>();
+        _audioSource=GetComponent<AudioSource>();
+        
         cam = Camera.main;
         
         _currentAmmo = MagazineSize;
@@ -58,7 +65,7 @@ public class Fire : MonoBehaviour
 
     private void Start()
     {
-        _playerBody.OnDeathEvent.AddListener(PlayerDie);
+        _playerBody.OnDeathEvent.AddListener(PlayerDeath);
     }
 
     private void Update()
@@ -118,10 +125,10 @@ public class Fire : MonoBehaviour
         }
         
         // 이펙트 효과 
-        // TODO : 사격 사운드 추가하기
-        _fireAnim.SetTrigger("Shot");
-        _weaponRecoil.PlayRecoil(aimDir);
-        _impulseSource.GenerateImpulse(-aimDir * _cameraShakeStrength); // 사격 반대 방향으로 카메라 흔들기
+        PlayClip(_fireSound);
+        _fireAnim?.SetTrigger("Shot");
+        _weaponRecoil?.PlayRecoil(aimDir);
+        _impulseSource?.GenerateImpulse(-aimDir * _cameraShakeStrength); // 사격 반대 방향으로 카메라 흔들기
         
     }
 
@@ -156,8 +163,8 @@ public class Fire : MonoBehaviour
     {
        
         _isReloading = true;
-
-        // TODO: 재장전 사운드
+        
+        PlayClip(_reloadSound);
         
         _reloadBar.Show(); // 재장전 UI 표시
 
@@ -185,7 +192,12 @@ public class Fire : MonoBehaviour
         _isReloading = false;
     }
 
-    private void PlayerDie()
+    private void PlayClip(AudioClip clip)
+    {
+        _audioSource.clip = clip;
+        _audioSource.Play();
+    }
+    private void PlayerDeath()
     {
         _isDead = true;
         StopAllCoroutines();

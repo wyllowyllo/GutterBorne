@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
 
     [Header("플레이어")]
     [SerializeField] private PlayerBody _playerBody;
+    
+    [Header("사운드")]
+    [SerializeField] private AudioSource _titleMusic;
+    [SerializeField] private AudioSource _bgmMusic;
+    
     private bool _isGameOver = false;
 
     private void Awake()
@@ -41,6 +46,8 @@ public class GameManager : MonoBehaviour
         if (_titlePanel != null) _titlePanel.SetActive(true);
         if (_inGamePanel != null) _inGamePanel.SetActive(false);
         if (_gameOverPanel != null) _gameOverPanel.SetActive(false);
+        
+        _titleMusic?.Play();
     }
 
     public void StartGame()
@@ -51,6 +58,9 @@ public class GameManager : MonoBehaviour
         if (_titlePanel != null) _titlePanel.SetActive(false);
         if (_inGamePanel != null) _inGamePanel.SetActive(true);
         if (_gameOverPanel != null) _gameOverPanel.SetActive(false);
+        
+        _titleMusic?.Stop();
+        _bgmMusic?.Play();
     }
 
     private void GameOver()

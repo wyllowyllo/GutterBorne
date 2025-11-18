@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Crosshair : MonoBehaviour
@@ -9,10 +10,13 @@ public class Crosshair : MonoBehaviour
     
     private Camera _camera;
 
+  
     private void Awake()
     {
        Init();
     }
+
+   
 
     private void Init()
     {
@@ -25,6 +29,7 @@ public class Crosshair : MonoBehaviour
 
     private void Update()
     {
+       
         FollowMouse();
     }
 
@@ -50,4 +55,6 @@ public class Crosshair : MonoBehaviour
         // 4. 크로스헤어 위치 = 플레이어 위치 + (제한된 오프셋)
         transform.position = centerPos + distance;
     }
+
+   
 }
