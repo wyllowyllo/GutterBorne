@@ -64,8 +64,10 @@ public class GameManager : MonoBehaviour
         if (_inGamePanel != null) _inGamePanel.SetActive(false);
     }
 
-    private void GameClear()
+    public void GameClear()
     {
+        Time.timeScale = 0f;
+        
         if (_gameOverPanel != null) _clearPanel.SetActive(true);
         if (_inGamePanel != null) _inGamePanel.SetActive(false);
     }
