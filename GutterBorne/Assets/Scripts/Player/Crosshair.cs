@@ -21,10 +21,6 @@ public class Crosshair : MonoBehaviour
     private void Init()
     {
         _camera = Camera.main;
-        
-        // 시스템 커서 숨기기 + 게임 창 안에 가두기
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Update()

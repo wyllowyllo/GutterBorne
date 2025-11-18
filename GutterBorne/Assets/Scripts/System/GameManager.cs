@@ -61,6 +61,10 @@ public class GameManager : MonoBehaviour
         
         _titleMusic?.Stop();
         _bgmMusic?.Play();
+        
+        // 시스템 커서 숨기기 + 게임 창 안에 가두기
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void GameOver()
@@ -68,6 +72,9 @@ public class GameManager : MonoBehaviour
         if (_isGameOver) return;
         _isGameOver = true;
 
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        
         Time.timeScale = 0f;
 
         if (_gameOverPanel != null) _gameOverPanel.SetActive(true);
@@ -76,6 +83,9 @@ public class GameManager : MonoBehaviour
 
     public void GameClear()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        
         Time.timeScale = 0f;
         
         if (_gameOverPanel != null) _clearPanel.SetActive(true);
