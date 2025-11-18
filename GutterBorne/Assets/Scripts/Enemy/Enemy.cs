@@ -107,10 +107,7 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
-        else
-        {
-            _animator.SetTrigger("hit");
-        }
+       
        
        
     }

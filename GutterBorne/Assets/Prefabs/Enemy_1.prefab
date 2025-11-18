@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2089209246908543161}
   - component: {fileID: 5368450326221089326}
   - component: {fileID: 1065480852464305256}
-  - component: {fileID: 6978900581569032885}
+  - component: {fileID: 3324679531289095539}
   m_Layer: 6
   m_Name: Enemy_1
   m_TagString: Enemy
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _moveSpeed: 6
-  _stopDistance: 0.2
+  _stopDistance: 1
   _knockbackDuration: 0.15
   _deathVFX: {fileID: 2957842864923083962, guid: ace9fc22d4885204fad19db7b31cf379, type: 3}
 --- !u!50 &1065480852464305256
@@ -157,7 +157,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &6978900581569032885
+--- !u!58 &3324679531289095539
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,5 +191,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.3}
-  m_Radius: 0.8
+  m_Offset: {x: 0, y: -0.23}
+  m_Radius: 0.9
