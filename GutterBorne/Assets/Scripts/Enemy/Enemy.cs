@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour
         }
        
        
-       
+       _animator.SetTrigger("hit");
     }
 
     public void Knockback(Vector2 dir, float power)
