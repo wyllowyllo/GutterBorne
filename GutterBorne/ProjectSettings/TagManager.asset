@@ -12,7 +12,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -48,11 +48,17 @@ TagManager:
   - name: Enemy
     uniqueID: 1616188421
     locked: 0
+  - name: Architecture
+    uniqueID: 4142338715
+    locked: 0
   - name: VFX
     uniqueID: 2054185947
     locked: 0
   - name: Crosshair
     uniqueID: 3649506721
+    locked: 0
+  - name: UI
+    uniqueID: 2902021099
     locked: 0
   m_RenderingLayers:
   - Default
