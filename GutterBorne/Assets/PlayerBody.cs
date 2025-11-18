@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PlayerBody : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlayerBody : MonoBehaviour
     [SerializeField] private float _health;
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _damageForFrame = 3f;
+    
+    [SerializeField] private Image _healthBarImage;
     private Animator _animator;
     private Rigidbody2D _rigid;
     
@@ -26,7 +29,14 @@ public class PlayerBody : MonoBehaviour
         
         _animator.SetTrigger("Death");
         
-       
+    }
+
+    private void LateUpdate()
+    {
+        if (_healthBarImage != null)
+        {
+            _healthBarImage.fillAmount = _health / _maxHealth;
+        }
     }
 
     private void OnCollisionStay2D(Collision2D other)

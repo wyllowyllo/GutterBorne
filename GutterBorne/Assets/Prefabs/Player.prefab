@@ -250,7 +250,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 14}
+  m_SizeDelta: {x: 80, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1851863921875870948
 CanvasRenderer:
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.58
+  m_FillAmount: 0.517
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -715,6 +715,7 @@ MonoBehaviour:
   _health: 100
   _maxHealth: 100
   _damageForFrame: 3
+  _healthBarImage: {fileID: 8812108913580298249}
 --- !u!1 &3499890869639182805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,7 +1039,7 @@ GameObject:
   - component: {fileID: 8063021413225100315}
   - component: {fileID: 8313960688239364475}
   m_Layer: 5
-  m_Name: ProgressBar1
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1062,7 +1063,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.3}
-  m_SizeDelta: {x: 100, y: 14}
+  m_SizeDelta: {x: 80, y: 10}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8063021413225100315
 CanvasRenderer:
