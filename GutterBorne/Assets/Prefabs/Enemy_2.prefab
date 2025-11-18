@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _moveSpeed: 4
+  _moveSpeed: 0.2
   _stopDistance: 0.5
   _knockbackDuration: 0.15
   _deathVFX: {fileID: 2957842864923083962, guid: ace9fc22d4885204fad19db7b31cf379, type: 3}

@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
     {
         if (_isKnockback) return;
 
-        Vector2 curPos = _rigid.position;
+        Vector2 curPos = transform.position;
         Vector2 targetPos = _player.position;
         Vector2 dir = (targetPos - curPos);
         float distance = dir.magnitude;
@@ -79,8 +79,8 @@ public class Enemy : MonoBehaviour
 
         dir = dir.normalized;
         Vector2 nextPos = curPos + dir * _moveSpeed * Time.deltaTime;
-        _rigid.MovePosition(nextPos);
-
+        //_rigid.MovePosition(nextPos);
+        transform.position = nextPos;
       
         _animator.SetFloat("moveSpeed", _moveSpeed);
         _renderer.flipX = (dir.x > 0);
