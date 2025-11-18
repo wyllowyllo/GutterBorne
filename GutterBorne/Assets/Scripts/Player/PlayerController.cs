@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _playerBody.OnDeathEvent.AddListener(PlayerDie);
+        _playerBody.OnDeathEvent.AddListener(PlayerDeath);
     }
 
     private void Update()
@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (_isDead) return;
+        
         Turn();
     }
     
@@ -79,7 +81,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void PlayerDie()
+    private void PlayerDeath()
     {
         _isDead = true;
         _rigid.linearVelocity = Vector2.zero;

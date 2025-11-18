@@ -8,14 +8,25 @@ public class PlayerHand : MonoBehaviour
     private float _currentAngle;
     SpriteRenderer _renderer;
     
+    private PlayerBody _playerBody;
+    private bool _isDead;
     private void Awake()
     {
         _camera = Camera.main;
         _renderer = GetComponentInChildren<SpriteRenderer>();
+        _playerBody = GetComponentInParent<PlayerBody>();
+        
+    }
+
+    private void Start()
+    {
+        _playerBody.OnDeathEvent.AddListener(PlayerDeath);
     }
 
     private void Update()
     {
+        if (_isDead) return;
+        
         AimToMouse();
        
     }
@@ -48,5 +59,10 @@ public class PlayerHand : MonoBehaviour
         // 캐릭터 본체 스프라이트
         _renderer.flipY = !facingRight;
 
+    }
+
+    private void PlayerDeath()
+    {
+        _isDead = true;
     }
 }

@@ -65,7 +65,7 @@ public class Fire : MonoBehaviour
 
     private void Start()
     {
-        _playerBody.OnDeathEvent.AddListener(PlayerDie);
+        _playerBody.OnDeathEvent.AddListener(PlayerDeath);
     }
 
     private void Update()
@@ -197,7 +197,7 @@ public class Fire : MonoBehaviour
         _audioSource.clip = clip;
         _audioSource.Play();
     }
-    private void PlayerDie()
+    private void PlayerDeath()
     {
         _isDead = true;
         StopAllCoroutines();
