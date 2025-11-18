@@ -192,4 +192,4 @@ MonoBehaviour:
   _moveSpeed: 4
   _stopDistance: 0.5
   _knockbackDuration: 0.15
-  _deathVFX: {fileID: 8782009059513614302, guid: 171dda363e9efd94ca9bc63e38ca9658, type: 3}
+  _deathVFX: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
