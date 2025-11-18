@@ -34,6 +34,7 @@ public class PlayerBody : MonoBehaviour
         if (!other.gameObject.CompareTag("Enemy") || _isDead) return;
         
         _health -= Time.deltaTime * _damageForFrame;
+        Debug.Log(_health);
         _animator.SetTrigger("Hit");
 
         if (_health <= 0)
