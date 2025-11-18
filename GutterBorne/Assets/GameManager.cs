@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _titlePanel;
     [SerializeField] private GameObject _inGamePanel;
     [SerializeField] private GameObject _gameOverPanel;
+    [SerializeField] private GameObject _clearPanel;
 
     [Header("플레이어")]
     [SerializeField] private PlayerBody _playerBody;
@@ -63,6 +64,11 @@ public class GameManager : MonoBehaviour
         if (_inGamePanel != null) _inGamePanel.SetActive(false);
     }
 
+    private void GameClear()
+    {
+        if (_gameOverPanel != null) _clearPanel.SetActive(true);
+        if (_inGamePanel != null) _inGamePanel.SetActive(false);
+    }
     private void PlayerDeath()
     {
         Invoke("GameOver", 1f);
