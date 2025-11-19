@@ -9,7 +9,7 @@ public class PlayerBody : MonoBehaviour
     
     [SerializeField] private float _health;
     [SerializeField] private float _maxHealth;
-    [SerializeField] private float _damageForFrame = 3f;
+    [SerializeField] private float _damageForFrame = 5f;
     
     [SerializeField] private Image _healthBarImage;
     private Animator _animator;

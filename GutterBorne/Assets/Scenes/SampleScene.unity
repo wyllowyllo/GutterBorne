@@ -31349,6 +31349,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3435022437199596406, guid: 127b067cea8c470428abe360856e0c18, type: 3}
+      propertyPath: _damageForFrame
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3435133874276359116, guid: 127b067cea8c470428abe360856e0c18, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -31360,6 +31364,10 @@ PrefabInstance:
     - target: {fileID: 5576189929408094106, guid: 127b067cea8c470428abe360856e0c18, type: 3}
       propertyPath: _dashSpeed
       value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5576189929408094106, guid: 127b067cea8c470428abe360856e0c18, type: 3}
+      propertyPath: _dashCoolTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5576189929408094106, guid: 127b067cea8c470428abe360856e0c18, type: 3}
       propertyPath: _dashDuration
