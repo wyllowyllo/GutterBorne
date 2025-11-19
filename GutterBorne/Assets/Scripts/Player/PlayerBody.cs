@@ -46,7 +46,7 @@ public class PlayerBody : MonoBehaviour
         
         _health -= Time.deltaTime * _damageForFrame;
         Debug.Log(_health);
-       
+       _animator.SetTrigger("Hit");
 
         if (_health <= 0)
         {
