@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     [Header("Hand")]
     [SerializeField] private GameObject _playerHand;
 
+    [Header("VFX")]
+    [SerializeField] private GameObject _dashVFX;
+    
     // 플레이어 컴포넌트
     private PlayerBody _playerBody;
     private SpriteRenderer _renderer;
@@ -132,7 +135,11 @@ public class PlayerController : MonoBehaviour
         
       
         gameObject.layer = LayerMask.NameToLayer("PlayerDash");
-        _animator.SetTrigger("Dash");
+        
+        if (_dashVFX != null)
+        {
+            Instantiate(_dashVFX, transform.position, _dashVFX.transform.rotation);
+        }
         
         float timer = 0f;
 

@@ -674,6 +674,7 @@ MonoBehaviour:
   _dashDuration: 0.12
   _dashCoolTime: 0.8
   _playerHand: {fileID: 5697221648300086569}
+  _dashVFX: {fileID: 3042519775331041172, guid: 841004c4c6a39e244abe2257394de913, type: 3}
 --- !u!114 &9031761959565974111
 MonoBehaviour:
   m_ObjectHideFlags: 0
