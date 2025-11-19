@@ -31341,6 +31341,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2965199572009876761, guid: 127b067cea8c470428abe360856e0c18, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3413979200080215735, guid: 127b067cea8c470428abe360856e0c18, type: 3}
       propertyPath: m_Name
       value: Player
@@ -31352,6 +31356,14 @@ PrefabInstance:
     - target: {fileID: 3576135813539122780, guid: 127b067cea8c470428abe360856e0c18, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5576189929408094106, guid: 127b067cea8c470428abe360856e0c18, type: 3}
+      propertyPath: _dashSpeed
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5576189929408094106, guid: 127b067cea8c470428abe360856e0c18, type: 3}
+      propertyPath: _dashDuration
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6222956812169244063, guid: 127b067cea8c470428abe360856e0c18, type: 3}
       propertyPath: m_LocalPosition.x

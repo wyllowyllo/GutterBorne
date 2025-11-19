@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     
     [Header("대쉬")]
-    [SerializeField] private float _dashSpeed = 18f;
-    [SerializeField] private float _dashDuration = 0.12f;
+    [SerializeField] private float _dashSpeed = 26f;
+    [SerializeField] private float _dashDuration = 0.10f;
     [SerializeField] private float _dashCoolTime = 0.8f;
     
     [Header("Hand")]
@@ -128,15 +128,15 @@ public class PlayerController : MonoBehaviour
     {
         _isDashing = true;
         int originalLayer = gameObject.layer;
+        Color originalColor = _renderer.color;
         
-        // 대시 레이어로 체인지
+      
         gameObject.layer = LayerMask.NameToLayer("PlayerDash");
+        _animator.SetTrigger("Dash");
         
         float timer = 0f;
 
-        // 무적, 충돌 off 옵션이 필요하면 여기서 처리
-      
-
+     
         while (timer < _dashDuration)
         {
             _rigid.linearVelocity = dashDirection * _dashSpeed;
@@ -144,12 +144,11 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
-        // 레이어 복구
+      
         gameObject.layer = originalLayer;
         
         // 대시 종료
         _isDashing = false;
-        // 콜라이더 On 복구 필요하면 여기서
     }
 
     private void PlayerDeath()
