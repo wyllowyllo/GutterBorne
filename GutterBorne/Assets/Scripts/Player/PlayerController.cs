@@ -1,23 +1,40 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
+    [Header("이동 속도")]
     [SerializeField] private float _moveSpeed;
+    
+    [Header("대쉬")]
+    [SerializeField] private float _dashSpeed = 18f;
+    [SerializeField] private float _dashDuration = 0.12f;
+    [SerializeField] private float _dashCoolTime = 0.8f;
+    
+    [Header("Hand")]
     [SerializeField] private GameObject _playerHand;
 
+    // 플레이어 컴포넌트
     private PlayerBody _playerBody;
     private SpriteRenderer _renderer;
     private Rigidbody2D _rigid;
     private Animator _animator;
 
+    // 카메라
     private Camera _camera;
     
-    private float moveHorizontal;
-    private float moveVertical;
+    // 입력
+    private float _moveHorizontal;
+    private float _moveVertical;
+    private bool _dashInput;
     
+   
+    // 플래그 변수
+    private bool _isDashing;
     private bool _isDead;
+
+    private float _dashTimer;
     private void Awake()
     {
         _playerBody = GetComponent<PlayerBody>();
@@ -37,7 +54,11 @@ public class PlayerController : MonoBehaviour
     {
         if (_isDead) return;
         
+        
+        Timer();
+        
        GetInput();
+       Dash();
        Move();
       
     }
@@ -52,21 +73,43 @@ public class PlayerController : MonoBehaviour
 
     private void GetInput()
     {
-        moveHorizontal = Input.GetAxisRaw("Horizontal");
-        moveVertical = Input.GetAxisRaw("Vertical");
-
-        if (moveHorizontal >= 0) _renderer.flipX = false;
+        _moveHorizontal = Input.GetAxisRaw("Horizontal");
+        _moveVertical = Input.GetAxisRaw("Vertical");
+        _dashInput = Input.GetKeyDown(KeyCode.Space);
+       
+        
+        if (_moveHorizontal >= 0) _renderer.flipX = false;
         else _renderer.flipX = true;
     }
     private void Move()
     {
-        Vector2 direction = new Vector2(moveHorizontal, moveVertical).normalized;
+        if (_isDashing) return;
+        
+        Vector2 _moveDirection = new Vector2(_moveHorizontal, _moveVertical).normalized;
         Vector2 curPosition = transform.position;
-        Vector2 nextPosition = curPosition + direction * _moveSpeed * Time.deltaTime;
+        Vector2 nextPosition = curPosition + _moveDirection * _moveSpeed * Time.deltaTime;
         
         transform.position = nextPosition;
-        _animator.SetFloat("moveSpeed", direction.magnitude);
+        _animator.SetFloat("moveSpeed", _moveDirection.magnitude);
         _rigid.linearVelocity = Vector2.zero;
+    }
+
+    private void Timer()
+    {
+        _dashTimer += Time.deltaTime;
+    }
+
+    private void Dash()
+    {
+        if (!_dashInput) return;
+        if (_isDashing) return;
+        if (_dashTimer < _dashCoolTime) return;
+        
+        Vector2 _dashDirection = new Vector2(_moveHorizontal, _moveVertical).normalized;
+        if (_dashDirection != Vector2.zero)
+        {
+            StartCoroutine(DashRoutine(_dashDirection));
+        }
     }
 
     private void Turn()
@@ -79,6 +122,34 @@ public class PlayerController : MonoBehaviour
 
         _renderer.flipX = !facingRight;
         
+    }
+
+    private IEnumerator DashRoutine(Vector2 dashDirection)
+    {
+        _isDashing = true;
+        int originalLayer = gameObject.layer;
+        
+        // 대시 레이어로 체인지
+        gameObject.layer = LayerMask.NameToLayer("PlayerDash");
+        
+        float timer = 0f;
+
+        // 무적, 충돌 off 옵션이 필요하면 여기서 처리
+      
+
+        while (timer < _dashDuration)
+        {
+            _rigid.linearVelocity = dashDirection * _dashSpeed;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        // 레이어 복구
+        gameObject.layer = originalLayer;
+        
+        // 대시 종료
+        _isDashing = false;
+        // 콜라이더 On 복구 필요하면 여기서
     }
 
     private void PlayerDeath()
